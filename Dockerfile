@@ -25,3 +25,6 @@ RUN set -ex; \
 
 # install docker-compose
 RUN apk update && apk add py-pip && pip install docker-compose
+
+# install git
+RUN apk add git
