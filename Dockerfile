@@ -1,11 +1,10 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 # install docker
-RUN apk add --no-cache \
-		ca-certificates
+RUN apk update && add --no-cache ca-certificates
 
-ENV DOCKER_CHANNEL edge
-ENV DOCKER_VERSION 17.05.0-ce
+ENV DOCKER_CHANNEL stable
+ENV DOCKER_VERSION 17.12.0-ce
 
 RUN set -ex; \
 	apk add --no-cache --virtual .fetch-deps \
@@ -24,7 +23,4 @@ RUN set -ex; \
 	docker -v
 
 # install docker-compose
-RUN apk update && apk add py-pip && pip install docker-compose
-
-# install git
-RUN apk add git
+RUN apk add py-pip && pip install docker-compose
